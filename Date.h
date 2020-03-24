@@ -23,8 +23,8 @@ public:
         return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
     }
     void show() const;
-    int distance(const Date& d) const {
-        return totalDays - d.totalDays;
+    int operator - (const Date& date) const {
+        return totalDays - date.totalDays;
     }
 };
 

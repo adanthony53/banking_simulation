@@ -52,7 +52,7 @@ void SavingsAccount::withdraw(const Date &date, double amount, const std::string
 
 // calculate interest
 void SavingsAccount::settle(const Date &date) {
-    double interest = acc.getSum(date) * rate / date.distance(Date(date.getYear()-1, 1, 1));
+    double interest = acc.getSum(date) * rate / (date - Date(date.getYear()-1, 1, 1));
     if (interest != 0) {
         record(date, interest, "interest");
     }
