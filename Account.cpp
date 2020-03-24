@@ -52,11 +52,14 @@ void SavingsAccount::withdraw(const Date &date, double amount, const std::string
 
 // calculate interest
 void SavingsAccount::settle(const Date &date) {
-    double interest = acc.getSum(date) * rate / (date - Date(date.getYear()-1, 1, 1));
-    if (interest != 0) {
-        record(date, interest, "interest");
+    if (date.getMonth() == 1) { //calculate interest at every January
+        double interest = acc.getSum(date) * rate /
+                (date - Date(date.getYear()-1, 1, 1));
+        if (interest != 0) {
+            record(date, interest, "interest");
+        }
+        acc.reset(date, getBalance());
     }
-    acc.reset(date, getBalance());
 }
 
 // --------------------------------- CreditAccount ---------------------------------

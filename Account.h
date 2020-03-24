@@ -24,7 +24,11 @@ public:
     const std::string &getId() const { return id; }
     double getBalance() const { return balance; }
     static double getTotal() { return total; }
-    void show() const;
+
+    virtual void deposit(const Date &date, double amount, const std::string &desc) = 0;
+    virtual void withdraw(const Date &date, double amount, const std::string &desc) = 0;
+    virtual void settle(const Date &date) = 0;
+    virtual void show() const;
 };
 
 class SavingsAccount : public Account {
@@ -36,9 +40,9 @@ public:
     SavingsAccount(const Date &date, const std::string &id, double rate);
     double getRate() const { return rate; }
 
-    void deposit(const Date &date, double amount, const std::string &desc);
-    void withdraw(const Date &date, double amount, const std::string &desc);
-    void settle(const Date &date);
+    virtual void deposit(const Date &date, double amount, const std::string &desc);
+    virtual void withdraw(const Date &date, double amount, const std::string &desc);
+    virtual void settle(const Date &date);
 };
 
 class CreditAccount : public Account {
@@ -66,11 +70,11 @@ public:
         }
     }
 
-    void deposit(const Date &date, double amount, const std::string &desc);
-    void withdraw(const Date &date, double amount, const std::string &desc);
-    void settle(const Date &date);
+    virtual void deposit(const Date &date, double amount, const std::string &desc);
+    virtual void withdraw(const Date &date, double amount, const std::string &desc);
+    virtual void settle(const Date &date);
 
-    void show() const;
+    virtual void show() const;
 };
 
 #endif //BANKING_SIMULATION_ACCOUNT_H

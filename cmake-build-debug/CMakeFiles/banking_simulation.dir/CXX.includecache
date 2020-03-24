@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/ad/CLionProjects/banking_simulation/Account.cpp
+cmath
+-
+iostream
+-
+Account.h
+/Users/ad/CLionProjects/banking_simulation/Account.h
+
+/Users/ad/CLionProjects/banking_simulation/Account.h
+Date.h
+/Users/ad/CLionProjects/banking_simulation/Date.h
+Accumulator.h
+/Users/ad/CLionProjects/banking_simulation/Accumulator.h
+string
+-
+
+/Users/ad/CLionProjects/banking_simulation/Accumulator.h
+Date.h
+/Users/ad/CLionProjects/banking_simulation/Date.h
+
+/Users/ad/CLionProjects/banking_simulation/Date.h
+
