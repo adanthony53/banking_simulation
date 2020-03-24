@@ -4,25 +4,34 @@ using namespace std;
 
 int main() {
     Date date(2000,1,1);
-    SavingsAccount accounts[] = {
-            SavingsAccount(date, "S333222111", 0.015),
-            SavingsAccount(date, "T000111222", 0.015)
-    };
-    const int n = sizeof(accounts)/sizeof(accounts[0]);
 
-    accounts[0].deposit(Date(2000,1,3), 5000, "salary");
-    accounts[1].deposit(Date(2000,2,3), 15000, "sell stock");
-    accounts[0].deposit(Date(2000,2,3), 5500, "salary");
-    accounts[1].withdraw(Date(2000,12,3), 3000, "buy stock");
+    SavingsAccount s1(date, "s1", 0.015);
+    SavingsAccount s2(date, "s1", 0.015);
+    CreditAccount c1(date, "c1", 5000, 0.003, 50);
+    CreditAccount c2(date, "c2", 15000, 0.004, 50);
+
+    cout << "Transaction in Jan." << endl;
+    s1.deposit(Date(2000,1,5), 5000, "salary");
+
+    cout << "Transaction in Feb." << endl;
+    s1.deposit(Date(2000,2,5), 5000, "salary");
+    s2.deposit(Date(2000,2,5), 15000, "sell stock");
+    c1.withdraw(Date(2000, 2, 1), 2000, "buy a stock");
+
+    cout << "Transaction in Mar." << endl;
+    c1.settle(Date(2000, 3, 1));
+    c1.deposit(Date(2000, 3, 1), 2174, "pay credit card dept");
+
+    cout << "settle all accounts on 3-1-2000" << endl;
+    s1.settle(Date(2000, 3, 1));
+    s2.settle(Date(2000, 3, 1));
+    c1.settle(Date(2000, 3, 1));
+
     cout << endl;
+    s1.show(); cout << endl;
+    s2.show(); cout << endl;
+    c1.show(); cout << endl;
 
-    for (int i = 0; i < n; i++) {
-        accounts[i].settle(Date(2001, 1, 1));
-        accounts[i].show();
-        cout << endl;
-    }
-
-
-    cout << "Total: " << SavingsAccount::getTotal() << endl;
+    cout << "Total: " << Account::getTotal() << endl;
     return 0;
 }
