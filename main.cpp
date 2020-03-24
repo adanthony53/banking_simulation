@@ -22,6 +22,7 @@ int main() {
         cout << endl;
     }
 
+
     cout << "Total: " << SavingsAccount::getTotal() << endl;
     return 0;
 }
