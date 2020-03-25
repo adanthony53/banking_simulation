@@ -5,8 +5,20 @@
 #include <iostream>
 #include "Account.h"
 using namespace std;
+using namespace std::rel_ops;
+
+// --------------------------------- AccountRecord ---------------------------------
+
+AccountRecord::AccountRecord(const Date &date, const Account *account, double amount, double balance, const std::string& desc)
+        : date(date), account(account), amount(amount), balance(balance), desc(desc) { }
+
+void AccountRecord::show() const {
+    date.show();
+    cout << "\t#" << account->getId() << "\t" << amount << "\t" << balance << "\t" << desc << endl;
+}
 
 double Account::total = 0;
+RecordMap Account::recordMap;
 
 // --------------------------------- Account ---------------------------------
 
@@ -19,8 +31,11 @@ void Account::record(const Date &date, double amount, const std::string &desc) {
     amount = floor(amount * 100 + 0.5) / 100;
     balance += amount;
     total += amount;
-    date.show();
-    cout << "\t#" << id << "\t" << amount << "\t" << balance << "\t" << desc << endl;
+    //date.show();
+    //cout << "\t#" << id << "\t" << amount << "\t" << balance << "\t" << desc << endl;
+    AccountRecord record(date, this, amount, balance, desc);
+    recordMap.insert(make_pair(date, record));
+    record.show();
 }
 
 void Account::show() const {
@@ -29,6 +44,16 @@ void Account::show() const {
 
 void Account::error(const std::string &msg) const {
     cout << "Error #" << id << " " << msg << endl;
+}
+
+void Account::query(const Date &begin, const Date &end) {
+    if (begin < end) {
+        RecordMap::iterator iter1 = recordMap.lower_bound(begin);
+        RecordMap::iterator iter2 = recordMap.upper_bound(end);
+        for (RecordMap::iterator iter = iter1; iter != iter2; iter1++) {
+            iter->second.show();
+        }
+    }
 }
 
 // --------------------------------- SavingsAccount ---------------------------------
@@ -96,5 +121,4 @@ void CreditAccount::show() const {
     Account::show();
     cout << "\tAvailable credit: " << getAvailableCredit() << endl;
 }
-
 
