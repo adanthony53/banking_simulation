@@ -6,14 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/ad/CLionProjects/banking_simulation/Account.cpp
-cmath
--
-iostream
--
-Account.h
-/Users/ad/CLionProjects/banking_simulation/Account.h
-
 /Users/ad/CLionProjects/banking_simulation/Account.h
 Date.h
 /Users/ad/CLionProjects/banking_simulation/Date.h
@@ -26,5 +18,17 @@ string
 Date.h
 /Users/ad/CLionProjects/banking_simulation/Date.h
 
+/Users/ad/CLionProjects/banking_simulation/Array.h
+cassert
+-
+
 /Users/ad/CLionProjects/banking_simulation/Date.h
+
+/Users/ad/CLionProjects/banking_simulation/main.cpp
+iostream
+-
+Account.h
+/Users/ad/CLionProjects/banking_simulation/Account.h
+Array.h
+/Users/ad/CLionProjects/banking_simulation/Array.h
 

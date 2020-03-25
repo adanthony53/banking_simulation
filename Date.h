@@ -14,7 +14,8 @@ private:
     int totalDays;
 
 public:
-    Date(int year, int month, int day);
+    Date(int year = 1, int month = 1, int day = 1);
+    static Date read();
     int getYear() const { return year; };
     int getMonth() const { return month; };
     int getDay() const { return day; }
@@ -25,6 +26,10 @@ public:
     void show() const;
     int operator - (const Date& date) const {
         return totalDays - date.totalDays;
+    }
+
+    bool operator < (const Date& date) const {
+        return totalDays < date.totalDays;
     }
 };
 
