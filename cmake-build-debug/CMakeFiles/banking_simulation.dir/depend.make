@@ -11,7 +11,6 @@ CMakeFiles/banking_simulation.dir/Date.cpp.o: ../Date.h
 
 CMakeFiles/banking_simulation.dir/main.cpp.o: ../Account.h
 CMakeFiles/banking_simulation.dir/main.cpp.o: ../Accumulator.h
-CMakeFiles/banking_simulation.dir/main.cpp.o: ../Array.h
 CMakeFiles/banking_simulation.dir/main.cpp.o: ../Date.h
 CMakeFiles/banking_simulation.dir/main.cpp.o: ../main.cpp
 

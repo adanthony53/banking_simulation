@@ -37,6 +37,7 @@ Date::Date(int year, int month, int day) : year(year), month(month), day(day) {
 Date Date::read() {
     int year, month, day;
     char c1, c2;
+    cout << "enter a date: ";
     cin >> year >> c1 >> month >> c2 >> day;
     return Date(year, month, day);
 }
