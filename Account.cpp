@@ -47,12 +47,11 @@ void Account::error(const std::string &msg) const {
 }
 
 void Account::query(const Date &begin, const Date &end) {
-    if (begin < end) {
+    if (begin <= end) {
         RecordMap::iterator iter1 = recordMap.lower_bound(begin);
         RecordMap::iterator iter2 = recordMap.upper_bound(end);
-        for (RecordMap::iterator iter = iter1; iter != iter2; iter1++) {
+        for (RecordMap::iterator iter = iter1; iter != iter2; ++iter)
             iter->second.show();
-        }
     }
 }
 
