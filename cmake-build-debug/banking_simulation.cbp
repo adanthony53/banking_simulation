@@ -89,6 +89,9 @@
 		<Unit filename="/Users/ad/CLionProjects/banking_simulation/Accumulator.h">
 			<Option target="banking_simulation"/>
 		</Unit>
+		<Unit filename="/Users/ad/CLionProjects/banking_simulation/Array.h">
+			<Option target="banking_simulation"/>
+		</Unit>
 		<Unit filename="/Users/ad/CLionProjects/banking_simulation/Date.cpp">
 			<Option target="banking_simulation"/>
 		</Unit>
