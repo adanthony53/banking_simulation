@@ -5,6 +5,7 @@
 #ifndef BANKING_SIMULATION_DATE_H
 #define BANKING_SIMULATION_DATE_H
 
+#include <iostream>
 
 class Date {
 private:
@@ -33,5 +34,6 @@ public:
     }
 };
 
-
+std::istream & operator >> (std::istream &in, Date &date);
+std::ostream & operator << (std::ostream &out, const Date &date);
 #endif //BANKING_SIMULATION_DATE_H

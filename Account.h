@@ -47,9 +47,14 @@ public:
     virtual void deposit(const Date &date, double amount, const std::string &desc) = 0;
     virtual void withdraw(const Date &date, double amount, const std::string &desc) = 0;
     virtual void settle(const Date &date) = 0;
-    virtual void show() const;
+    virtual void show(std::ostream &out) const;
     static void query(const Date& begin, const Date& end);
 };
+
+inline std::ostream & operator << (std::ostream &out, const Account &account) {
+    account.show(out);
+    return out;
+}
 
 class SavingsAccount : public Account {
 private:
@@ -94,7 +99,7 @@ public:
     virtual void withdraw(const Date &date, double amount, const std::string &desc);
     virtual void settle(const Date &date);
 
-    virtual void show() const;
+    virtual void show(std::ostream &out) const;
 };
 
 #endif //BANKING_SIMULATION_ACCOUNT_H

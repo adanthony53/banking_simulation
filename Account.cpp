@@ -38,8 +38,8 @@ void Account::record(const Date &date, double amount, const std::string &desc) {
     record.show();
 }
 
-void Account::show() const {
-    cout << id << "\t balance: " << balance << endl;
+void Account::show(ostream &out) const {
+    out << id << "\t balance: " << balance;
 }
 
 void Account::error(const std::string &msg) const {
@@ -116,8 +116,8 @@ void CreditAccount::settle(const Date &date) {
     acc.reset(date, getDebt());
 }
 
-void CreditAccount::show() const {
-    Account::show();
-    cout << "\tAvailable credit: " << getAvailableCredit() << endl;
+void CreditAccount::show(ostream &out) const {
+    Account::show(out);
+    out << "\tAvailable credit: " << getAvailableCredit();
 }
 
