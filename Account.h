@@ -9,6 +9,8 @@
 #include "Accumulator.h"
 #include <string>
 #include <map>
+#include <istream>
+#include <stdexcept>
 
 class Account;
 
@@ -100,6 +102,15 @@ public:
     virtual void settle(const Date &date);
 
     virtual void show(std::ostream &out) const;
+};
+
+class AccountException : public  std::runtime_error {
+private:
+    const Account *account;
+
+public:
+    AccountException(const Account *account, const std::string &msg) : runtime_error(msg), account(account) {}
+    const Account *getAccount() const { return account; }
 };
 
 #endif //BANKING_SIMULATION_ACCOUNT_H

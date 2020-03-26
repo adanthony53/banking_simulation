@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <istream>
 #include <sstream>
 #include <fstream>
 #include "Account.h"
@@ -109,8 +110,15 @@ int main() {
 
     ifstream fileIn(FILE_NAME);
     if (fileIn) {
-        while (getline(fileIn, cmdLine))
-            controller.runCommand(cmdLine);
+        while (getline(fileIn, cmdLine)) {
+            try {
+                controller.runCommand(cmdLine);
+            } catch (exception &e) {
+                cout << "bad line in " << FILE_NAME << ": " << cmdLine << endl;
+                cout << "error: " << e.what() << endl;
+                return 1;
+            }
+        }
         fileIn.close();
     }
 
@@ -120,8 +128,14 @@ int main() {
         cout << controller.getDate() << "\tTotal: " << Account::getTotal() << "\tcommand> ";
         string cmdLine;
         getline(cin, cmdLine);
-        if (controller.runCommand(cmdLine))
-            fileOut << cmdLine << endl;
+        try {
+            if (controller.runCommand(cmdLine))
+                fileOut << cmdLine << endl;
+        } catch (AccountException &e) {
+            cout << "error (#" << e.getAccount()->getId() << "): " << e.what() << endl;
+        } catch (exception &e) {
+            cout << "error: " << e.what() << endl;
+        }
     }
 
     return 0;

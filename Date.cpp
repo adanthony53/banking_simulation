@@ -5,6 +5,8 @@
 #include "Date.h"
 #include <iostream>
 #include <cstdlib>
+#include <stdexcept>
+
 using namespace std;
 
 namespace {
@@ -21,8 +23,9 @@ int Date::getMaxDay() const {
 
 Date::Date(int year, int month, int day) : year(year), month(month), day(day) {
     if (day <= 0 | day > getMaxDay()) {
-        cout << "invalid date" << endl;
-        exit(1);
+        //cout << "invalid date" << endl;
+        //exit(1);
+        throw runtime_error("Invalid date");
     }
     int years = year - 1;
     totalDays = years * 365 + years / 4 - years / 100 + years / 400

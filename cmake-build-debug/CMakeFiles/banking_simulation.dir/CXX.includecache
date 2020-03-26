@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+/Users/ad/CLionProjects/banking_simulation/Account.cpp
+cmath
+-
+iostream
+-
+Account.h
+/Users/ad/CLionProjects/banking_simulation/Account.h
+
 /Users/ad/CLionProjects/banking_simulation/Account.h
 Date.h
 /Users/ad/CLionProjects/banking_simulation/Date.h
@@ -15,10 +23,24 @@ string
 -
 map
 -
+istream
+-
+stdexcept
+-
 
 /Users/ad/CLionProjects/banking_simulation/Accumulator.h
 Date.h
 /Users/ad/CLionProjects/banking_simulation/Date.h
+
+/Users/ad/CLionProjects/banking_simulation/Date.cpp
+Date.h
+/Users/ad/CLionProjects/banking_simulation/Date.h
+iostream
+-
+cstdlib
+-
+stdexcept
+-
 
 /Users/ad/CLionProjects/banking_simulation/Date.h
 iostream
@@ -30,6 +52,8 @@ iostream
 vector
 -
 algorithm
+-
+istream
 -
 sstream
 -
